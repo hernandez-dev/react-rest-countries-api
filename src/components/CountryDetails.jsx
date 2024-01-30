@@ -5,6 +5,9 @@ import { useImmer } from "use-immer"
 // api
 import { fetchRequest } from "../api.js"
 
+// components
+import CountryBorder from "./CountryBorder.jsx"
+
 // DetailsRow
 function DetailsRow({ label, value }) {
   return(
@@ -28,9 +31,9 @@ export default function CountryDetails() {
   useEffect(() => {
     async function fetchCountry() {
       try {
-        const response = await fetchRequest(`/name/${params.country.replaceAll('-', ' ')}`)
+        const response = await fetchRequest(`/name/${params.country.replaceAll('-', ' ')}?fullText=true`)
         if (response.length) {
-          console.log(response[0])
+          // console.log(response[0])
           setState(draft => {
             draft.country = response[0]
             draft.loading = false
@@ -41,7 +44,7 @@ export default function CountryDetails() {
       }
     }
     fetchCountry()
-  }, [])
+  }, [params.country])
 
   if (!state.country) return ""
 
@@ -77,14 +80,8 @@ export default function CountryDetails() {
               <h3 className="font-semibold capitalize laeding-none">
                 border countries:
               </h3>
-              <div className="grid grid-cols-2">
-                {state.country.borders.map(border => {
-                  return (
-                    <Link key={border} className="laeding-10">
-                      {border}
-                    </Link>
-                  )
-                })}
+              <div className="grid grid-cols-4 gap-2">
+                {state.country.borders.map(border => <CountryBorder key={border} border={border} code={state.country.cca2} />)}
               </div>
             </div>
           ) : ''}
