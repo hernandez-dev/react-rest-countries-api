@@ -1,6 +1,11 @@
+import { Link } from "react-router-dom"
+
 export default function CountryCard({ country }) {
   return(
-    <article className="bg-white rounded-lg shadow-sm shadow-black/20 overflow-hidden">
+    <Link
+      to={`/${country.name.common.toLowerCase().replaceAll(' ', '-')}/details`}
+      className="block bg-white rounded-lg shadow-sm shadow-black/20 overflow-hidden"
+    >
       <div className="">
         <img src={country.flags.png} alt={country.flags.alt} className="block w-full h-[20vw] max-h-[300px]" />
       </div>
@@ -20,6 +25,6 @@ export default function CountryCard({ country }) {
           </p>
         </div>
       </section>
-    </article>
+    </Link>
   )
 }
