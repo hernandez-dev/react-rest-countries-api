@@ -4,12 +4,12 @@ export default function CountryCard({ country }) {
   return(
     <Link
       to={`/${country.name.common.toLowerCase().replaceAll(' ', '-')}/details`}
-      className="block bg-white rounded-lg shadow-sm shadow-black/20 overflow-hidden"
+      className="block bg-white rounded-lg shadow-sm shadow-black/20 overflow-hidden dark:bg-dark-blue"
     >
       <div className="">
         <img src={country.flags.png} alt={country.flags.alt} className="block w-full h-[20vw] max-h-[300px]" />
       </div>
-      <section className="p-5">
+      <section className="p-5 text-dark-gray dark:text-white">
         <h2 className="font-bold text-xl leading-none truncate">
           {country.name.common}
         </h2>
