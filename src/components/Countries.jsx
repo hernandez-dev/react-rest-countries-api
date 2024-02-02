@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import { useImmer } from "use-immer"
+import { useImmer, useImmerReducer } from "use-immer"
 
 // api
 import { fetchRequest } from "../api.js"
@@ -9,25 +9,38 @@ import axios from "axios"
 
 // components
 import CountryCard from "./CountryCard.jsx"
+import SearchBox from "./SearchBox.jsx"
+import RegionSelector from "./RegionSelector.jsx"
 
 export default function Countries({ route }) {
-  // state
-  const [state, setState] = useImmer({
+  // initialState
+  const initialState = {
     countries: [],
+    regions: [],
     query: "",
     loading: false
-  })
+  }
+
+  // reducer
+  function reducer(draft, action) {
+    switch(action.type) {
+      case "set-countries":
+        draft.countries = action.value
+        break
+      case "set-query":
+        draft.query = action.value.trim() ? action.value : ''
+        break
+    } // switch end
+  }
+
+  const [state, dispatch] = useImmerReducer(reducer, initialState)
 
   // mounted
   useEffect(() => {
     async function fetchCountries() {
       try {
         const response = await fetchRequest(route)
-        console.log(response.slice(0, 1))
-        setState(draft => {
-          draft.countries = response.slice(0, 50)
-          draft.loading = false
-        }) // setState end
+        dispatch({ type: "set-countries", value: response })
       } catch (e) {
         console.log(e)
       }
@@ -38,12 +51,8 @@ export default function Countries({ route }) {
   return(
     <div className="p-10">
       <div className="flex justify-between">
-        <form className="">
-          search box
-        </form>
-        <div className="">
-          region selector
-        </div>
+        <SearchBox query="" dispatch={() => console.log("hey")} />
+        <RegionSelector regions={["america", "asia"]} />
       </div>
       <div className="grid grid-cols-4 gap-5 pt-5 mx-auto">
         {state.countries.map(country => <CountryCard key={country.name.common} country={country} />)}
