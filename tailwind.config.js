@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
       colors: {
-        "dark-bg": "hsl(207, 26%, 17%)",
-        "light-bg": "hsl(0, 0%, 98%)",
+        "primary-dark": "hsl(207, 26%, 17%)",
+        "primary-light": "hsl(0, 0%, 98%)",
         "dark-blue": "hsl(209, 23%, 22%)",
         "dark-gray": "hsl(0, 0%, 52%)"
       }
