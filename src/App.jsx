@@ -14,10 +14,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Countries route="/all" />} />
           <Route path="/region/:region" element={<Countries route={`/region/oceania`} />} />
-          <Route path="/:code/details" element={<CountryDetails />} />
+          <Route path="/:country/details" element={<CountryDetails />} />
         </Routes>
       </main>
     </BrowserRouter>
+  )
 }
 
 export default App
