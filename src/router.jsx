@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 
 // routes
 import Root from "./routes/root.jsx"
+import Countries, { loader as countriesLoader } from "./routes/countries.jsx"
 
 const router = createBrowserRouter([
   {
@@ -10,7 +11,8 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
-        element: <h1>welcome</h1>
+        loader: countriesLoader,
+        element: <Countries />
       }
     ]
   }
