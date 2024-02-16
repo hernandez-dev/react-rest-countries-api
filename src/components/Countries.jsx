@@ -8,6 +8,7 @@ import { fetchRequest } from "../api.js"
 import axios from "axios"
 
 // components
+import Page from "./Page.jsx"
 import CountryCard from "./CountryCard.jsx"
 import SearchBox from "./SearchBox.jsx"
 import RegionSelector from "./RegionSelector.jsx"
@@ -49,14 +50,16 @@ export default function Countries({ route }) {
   }, [route])
 
   return(
-    <div className="p-10">
-      <div className="flex justify-between">
-        <SearchBox query="" dispatch={() => console.log("hey")} />
-        <RegionSelector regions={["america", "asia"]} />
+    <Page title="Where in the world!">
+      <div className="p-10">
+        <div className="flex justify-between">
+          <SearchBox query={state.query} dispatch={dispatch} />
+          <RegionSelector regions={["america", "asia"]} />
+        </div>
+        <div className="grid grid-cols-4 gap-5 pt-5 mx-auto">
+          {state.countries.map(country => <CountryCard key={country.name.common} country={country} />).slice(0, 50)}
+        </div>
       </div>
-      <div className="grid grid-cols-4 gap-5 pt-5 mx-auto">
-        {state.countries.map(country => <CountryCard key={country.name.common} country={country} />)}
-      </div>
-    </div>
+    </Page>
   )
 }
