@@ -6,6 +6,7 @@ import { useImmer } from "use-immer"
 import { fetchRequest } from "../api.js"
 
 // components
+import Page from "./Page.jsx"
 import CountryBorder from "./CountryBorder.jsx"
 
 // DetailsRow
@@ -31,9 +32,9 @@ export default function CountryDetails() {
   useEffect(() => {
     async function fetchCountry() {
       try {
-        const response = await fetchRequest(`/name/${params.country.replaceAll('-', ' ')}?fullText=true`)
+        const code = params.country.slice(params.country.lastIndexOf("-") + 1)
+        const response = await fetchRequest(`/alpha/${code}`)
         if (response.length) {
-          // console.log(response[0])
           setState(draft => {
             draft.country = response[0]
             draft.loading = false
@@ -49,44 +50,46 @@ export default function CountryDetails() {
   if (!state.country) return ""
 
   return(
-    <div className="p-10">
-      <header>
-        header
-      </header>
-      <section className="grid grid-cols-2 gap-10 pt-10">
-        <div className="rounded-lg overflow-hidden">
-          <img src={state.country.flags.png} className="block w-full" alt={state.country.flags.alt} />
-        </div>
-        <div className="">
-          <h2 className="font-bold text-3xl capitalize leading-none">
-            {state.country.name.common}
-          </h2>
-          <div className="grid grid-cols-2">
-            <div className="space-y-4">
-              <DetailsRow label="native name" value="" />
-              <DetailsRow label="population" value={state.country.population} />
-              <DetailsRow label="region" value={state.country.region} />
-              <DetailsRow label="sub region" value={state.country.subregion} />
-              <DetailsRow label="capital" value={state.country.capital[0]} />
-            </div>
-            <div className="space-y-4">
-              <DetailsRow label="top level domain" value={state.country.tld} />
-              <DetailsRow label="currencies" value={Object.values(state.country.currencies).map(prev => prev.name).join(', ')} />
-              <DetailsRow label="languages" value={Object.values(state.country.languages).join(', ')} />
-            </div>
+    <Page title={state.country.name.common + ' - details'}>
+      <div className="p-10">
+        <header>
+          header
+        </header>
+        <section className="grid grid-cols-2 gap-10 pt-10">
+          <div className="rounded-lg overflow-hidden">
+            <img src={state.country.flags.png} className="block w-full" alt={state.country.flags.alt} />
           </div>
-          {state.country.borders ? (
-            <div className="">
-              <h3 className="font-semibold capitalize laeding-none">
-                border countries:
-              </h3>
-              <div className="grid grid-cols-4 gap-2">
-                {state.country.borders.map(border => <CountryBorder key={border} border={border} code={state.country.cca2} />)}
+          <div className="">
+            <h2 className="font-bold text-3xl capitalize leading-none">
+              {state.country.name.common}
+            </h2>
+            <div className="grid grid-cols-2">
+              <div className="space-y-4">
+                <DetailsRow label="native name" value="" />
+                <DetailsRow label="population" value={state.country.population} />
+                <DetailsRow label="region" value={state.country.region} />
+                <DetailsRow label="sub region" value={state.country.subregion} />
+                <DetailsRow label="capital" value={state.country.capital[0]} />
+              </div>
+              <div className="space-y-4">
+                <DetailsRow label="top level domain" value={state.country.tld} />
+                <DetailsRow label="currencies" value={Object.values(state.country.currencies).map(prev => prev.name).join(', ')} />
+                <DetailsRow label="languages" value={Object.values(state.country.languages).join(', ')} />
               </div>
             </div>
-          ) : ''}
-        </div>
-      </section>
-    </div>
+            {state.country.borders ? (
+              <div className="">
+                <h3 className="font-semibold capitalize laeding-none">
+                  border countries:
+                </h3>
+                <div className="grid grid-cols-4 gap-2">
+                  {state.country.borders.map(border => <CountryBorder key={border} border={border} />)}
+                </div>
+              </div>
+            ) : ''}
+          </div>
+        </section>
+      </div>
+    </Page>
   )
 }
