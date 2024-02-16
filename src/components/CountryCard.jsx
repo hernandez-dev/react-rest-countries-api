@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 export default function CountryCard({ country }) {
   return(
     <Link
-      to={`/${country.name.common.toLowerCase().replaceAll(' ', '-')}/details`}
+      to={`/${country.name.common.replaceAll(' ', '-').concat(`-${country.cca2}`).toLowerCase()}/details`}
       className="block bg-white rounded-lg shadow-sm shadow-black/20 overflow-hidden dark:bg-dark-blue"
     >
       <div className="">
@@ -21,7 +21,7 @@ export default function CountryCard({ country }) {
             <span className="font-semibold">region:</span> {country.region}
           </p>
           <p className="capitalize laeding-none">
-            <span className="font-semibold">capital:</span> {country.capital[0]}
+            <span className="font-semibold">capital:</span> {country.capital ? country.capital[0] : '-'}
           </p>
         </div>
       </section>
