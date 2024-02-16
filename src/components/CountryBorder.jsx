@@ -14,7 +14,7 @@ export default function CountryBorder({ border }) {
       try {
         const response = await fetchRequest(`/alpha/${border.toLowerCase()}`)
         if (response.length) {
-          console.log(response[0])
+          // console.log(response[0])
           setCountry(response[0])
         }
       } catch (e) {
@@ -26,7 +26,7 @@ export default function CountryBorder({ border }) {
 
   return country ? (
     <Link
-      to={`/${country.name.common.toLowerCase().replaceAll(' ', '-')}/details`}
+      to={`/${country.name.common.replaceAll(' ', '-').concat(`-${country.cca2}`).toLowerCase()}/details`}
       className="block border rounded text-center leading-10"
     >
       {country.name.common}
