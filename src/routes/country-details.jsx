@@ -42,21 +42,21 @@ export default function CountryDetails() {
 
   return(
     <Page title={country.name.common + ' - details'}>
-      <div className={`p-10 mx-auto ${navigation.state === "loading" ? 'opacity-10' : ''} transition duration-300 desktop:max-w-desktop desktop:px-0`}>
+      <div className={`p-10 max-w-2xl mx-auto ${navigation.state === "loading" ? 'opacity-10' : ''} transition duration-300 desktop:max-w-desktop desktop:px-0`}>
         <header>
           <button className="" onClick={() => navigate(-1)}>
             header
           </button>
         </header>
-        <section className="flex items-center gap-10 pt-10">
-          <div className="flex-1 rounded-lg overflow-hidden">
-            <img src={country.flags.png} className="block w-full" alt={country.flags.alt} />
+        <section className="pt-10 space-y-10">
+          <div className="h-[60vw] max-h-[500px] rounded-lg overflow-hidden">
+            <img src={country.flags.png} className="block w-full h-full" alt={country.flags.alt} />
           </div>
-          <div className="flex-1 space-y-10 text-primary-dark dark:text-white">
+          <div className="space-y-10 text-primary-dark dark:text-white">
             <h2 className="font-bold text-3xl capitalize leading-none">
               {country.name.common}
             </h2>
-            <div className="grid grid-cols-2">
+            <div className="space-y-10">
               <div className="space-y-4">
                 <DetailsRow label="native name" value="" />
                 <DetailsRow label="population" value={country.population} />
@@ -75,7 +75,7 @@ export default function CountryDetails() {
                 <h3 className="font-semibold capitalize laeding-none">
                   border countries:
                 </h3>
-                <div className="grid grid-cols-4 gap-2 pt-5">
+                <div className="grid grid-cols-3 gap-2 pt-5">
                   {country.borders.map(border => <CountryBorder key={border} border={border} />)}
                 </div>
               </div>
