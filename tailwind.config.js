@@ -7,6 +7,12 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      maxWidth: {
+        desktop: "2000px"
+      },
+      screens: {
+        desktop: "2000px"
+      },
       colors: {
         "primary-dark": "hsl(207, 26%, 17%)",
         "primary-light": "hsl(0, 0%, 98%)",
