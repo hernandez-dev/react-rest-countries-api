@@ -42,7 +42,7 @@ export default function CountryDetails() {
 
   return(
     <Page title={country.name.common + ' - details'}>
-      <div className={`p-10 ${navigation.state === "loading" ? 'opacity-10' : ''} transition duration-300`}>
+      <div className={`p-10 mx-auto ${navigation.state === "loading" ? 'opacity-10' : ''} transition duration-300 desktop:max-w-desktop desktop:px-0`}>
         <header>
           <button className="" onClick={() => navigate(-1)}>
             header
