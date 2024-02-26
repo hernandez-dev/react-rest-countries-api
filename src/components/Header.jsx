@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 
-export default function Header({ darkMode, dispatch }) {
+export default function Header({ setState }) {
   return (
     <header className="flex items-center justify-between p-6 px-10 shadow-sm shadow-black/[15%]">
       <Link to="/">
@@ -8,7 +8,7 @@ export default function Header({ darkMode, dispatch }) {
           where in the world!
         </h1>
       </Link>
-      <button className="block capitalize">
+      <button onClick={() => setState(draft => { draft.darkMode = !draft.darkMode })} className="block capitalize">
         dark mode
       </button>
     </header>
