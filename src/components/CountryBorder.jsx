@@ -27,7 +27,7 @@ export default function CountryBorder({ border }) {
   return country ? (
     <Link
       to={`/${country.name.common.replaceAll(' ', '-').concat(`-${country.cca2}`).toLowerCase()}/details`}
-      className="block border rounded text-center leading-10"
+      className="block h-10 border rounded text-center leading-10"
     >
       {country.name.common}
     </Link>
