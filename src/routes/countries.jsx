@@ -23,11 +23,13 @@ export default function Countries() {
 
   return(
     <Page title="Where in the world!">
-      <header className="p-10 pb-0 mx-auto desktop:max-w-desktop desktop:px-0">
-        search box and region selector will go here
-      </header>
-      <div className="grid grid-cols-4 gap-5 p-10 mx-auto desktop:max-w-desktop desktop:px-0">
-        {countries.map(country => <CountryCard key={country.name.common} country={country} />).slice(0, 50)}
+      <div className="p-5 space-y-10 max-w-2xl mx-auto tablet:max-w-full countries-desktop:px-10 desktop:max-w-desktop desktop:px-0">
+        <header className="">
+          search box and region selector will go here
+        </header>
+        <div className="grid gap-5 tablet:grid-cols-2 countries-desktop:grid-cols-3 countries-xl:grid-cols-4">
+          {countries.map(country => <CountryCard key={country.name.common} country={country} />).slice(0, 50)}
+        </div>
       </div>
     </Page>
   )
