@@ -1,4 +1,4 @@
-import { useLoaderData, useNavigate } from "react-router-dom"
+import { useLoaderData, useNavigate, useNavigation } from "react-router-dom"
 
 // api
 import { fetchRequest } from "../api.js"
@@ -32,6 +32,9 @@ export default function CountryDetails() {
   // country
   const country = useLoaderData()
 
+  // navigation
+  const navigation = useNavigation()
+
   // navigate
   const navigate = useNavigate()
 
@@ -39,7 +42,7 @@ export default function CountryDetails() {
 
   return(
     <Page title={country.name.common + ' - details'}>
-      <div className="p-10">
+      <div className={`p-10 ${navigation.state === "loading" ? 'opacity-10' : ''} transition duration-300`}>
         <header>
           <button className="" onClick={() => navigate(-1)}>
             header
