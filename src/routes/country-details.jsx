@@ -56,7 +56,7 @@ export default function CountryDetails() {
             <h2 className="font-bold text-3xl capitalize leading-none">
               {country.name.common}
             </h2>
-            <div className="space-y-10">
+            <div className="space-y-10 sm:grid sm:grid-cols-2 sm:space-y-0">
               <div className="space-y-4">
                 <DetailsRow label="native name" value="" />
                 <DetailsRow label="population" value={country.population} />
