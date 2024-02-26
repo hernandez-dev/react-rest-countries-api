@@ -11,6 +11,9 @@ export default {
         desktop: "2000px"
       },
       screens: {
+        tablet: "1000px",
+        "countries-desktop": "1400px",
+        "countries-xl": "1800px",
         desktop: "2000px"
       },
       colors: {
