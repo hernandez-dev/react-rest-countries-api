@@ -9,7 +9,7 @@ export default function CountryCard({ country }) {
       <div className="h-[60vw] max-h-[400px] countries-xl:max-h-[350px]">
         <img src={country.flags.png} alt={country.flags.alt} className="block w-full h-full" />
       </div>
-      <section className="p-5 text-dark-gray dark:text-white">
+      <section className="p-5 text-dark-blue dark:text-white">
         <h2 className="font-bold text-xl leading-none truncate">
           {country.name.common}
         </h2>
