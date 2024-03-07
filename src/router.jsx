@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 
 // routes
 import Root from "./routes/root.jsx"
-import Countries, { loader as countriesLoader } from "./routes/countries.jsx"
+import Countries, { loader as countriesLoader } from "./routes/countries/index.jsx"
 import CountryDetails, { loader as countryLoader } from "./routes/country-details.jsx"
 
 const router = createBrowserRouter([
@@ -12,6 +12,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "",
+        loader: countriesLoader,
+        element: <Countries />
+      },
+      {
+        path: "region/:region",
         loader: countriesLoader,
         element: <Countries />
       },
