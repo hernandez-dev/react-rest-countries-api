@@ -44,8 +44,11 @@ export default function CountryDetails() {
     <Page title={country.name.common + ' - details'}>
       <div className={`p-5 max-w-2xl mx-auto ${navigation.state === "loading" ? 'opacity-10' : ''} transition duration-300 desktop:max-w-desktop desktop:px-0`}>
         <header>
-          <button className="" onClick={() => navigate(-1)}>
-            header
+          <button className="flex items-center h-10 px-8 bg-white shadow rounded-md text-dark-blue dark:bg-dark-blue dark:text-white" onClick={() => navigate("/")}>
+            <span className="block mr-3 leading-none">
+              <i className="fa-solid fa-arrow-left" />
+            </span>
+            Back
           </button>
         </header>
         <section className="pt-10 space-y-10">
