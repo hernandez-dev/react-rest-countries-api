@@ -10,12 +10,20 @@ import RegionSelector from "./components/RegionSelector.jsx"
 import { fetchRequest } from "../../api.js"
 
 // loader
-export async function loader({ params }) {
+export async function loader({ request, params }) {
   try {
-    const response = await fetchRequest(params.region ? `/region/${params.region}` : '/all')
+    let response = []
+    const url = new URL(request.url)
+    const q = url.searchParams.get("q")
+    if (q) {
+      response = await fetchRequest(`/name/${q}`)
+    } else {
+      response = await fetchRequest(params.region ? `/region/${params.region}` : '/all')
+    }
     return response
   } catch (e) {
     console.log(e)
+    return e
   }
 }
 
@@ -26,7 +34,6 @@ export default function Countries() {
   // navigation
   const navigation = useNavigation()
 
-
   return(
     <Page title="Where in the world!">
       <div className="p-5 space-y-10 max-w-2xl mx-auto tablet:max-w-full countries-desktop:px-10 desktop:max-w-desktop desktop:px-0">
@@ -34,9 +41,15 @@ export default function Countries() {
           <SearchBox />
           <RegionSelector />
         </header>
-        <div className={`grid gap-5 ${navigation.state === "loading" ? 'opacity-50' : ''} transition duration-300 tablet:grid-cols-2 countries-desktop:grid-cols-3 countries-xl:grid-cols-4`}>
-          {countries.map(country => <CountryCard key={country.name.common} country={country} />).slice(0, 50)}
-        </div>
+        {countries ? (
+          <div className={`grid gap-5 ${navigation.state === "loading" ? 'opacity-50' : ''} transition duration-300 tablet:grid-cols-2 countries-desktop:grid-cols-3 countries-xl:grid-cols-4`}>
+            {countries.map(country => <CountryCard key={country.name.common} country={country} />).slice(0, 50)}
+          </div>
+        ) : (
+          <h2 className="text-center text-dark-gray">
+            No results for your search
+          </h2>
+        )}
       </div>
     </Page>
   )
