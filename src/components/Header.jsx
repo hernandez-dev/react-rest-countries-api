@@ -9,7 +9,10 @@ export default function Header({ setState }) {
             where in the world!
           </h1>
         </Link>
-        <button onClick={() => setState(draft => { draft.darkMode = !draft.darkMode })} className="block capitalize">
+        <button onClick={() => setState(draft => { draft.darkMode = !draft.darkMode })} className="flex items-center font-semibold capitalize">
+          <span className="block mr-3 leading-none">
+            <i className="fa-solid fa-moon"></i>
+          </span>
           dark mode
         </button>
       </div>
