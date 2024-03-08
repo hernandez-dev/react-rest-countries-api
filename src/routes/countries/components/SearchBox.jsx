@@ -2,7 +2,7 @@ import { Form } from "react-router-dom"
 
 export default function SearchBox() {
   return(
-    <Form className="flex items-center bg-white rounded-md shadow-md text-dark-gray overflow-hidden dark:bg-dark-blue dark:text-white" role="search">
+    <Form className="flex items-center bg-white rounded-md shadow-md text-dark-gray overflow-hidden tablet:w-[400px] dark:bg-dark-blue dark:text-white" role="search">
       <span className="block w-[3.5rem] h-[3.5rem] ml-1 text-center leading-[3.5rem]">
         <i className="fa-solid fa-search"></i>
       </span>
