@@ -37,7 +37,7 @@ export default function Countries() {
   return(
     <Page title="Where in the world!">
       <div className="p-5 space-y-10 max-w-2xl mx-auto tablet:max-w-full countries-desktop:px-10 desktop:max-w-desktop desktop:px-0">
-        <header className="flex items-center justify-between">
+        <header className="space-y-5 tablet:flex tablet:items-center tablet:justify-between tablet:space-y-0">
           <SearchBox />
           <RegionSelector />
         </header>
