@@ -33,10 +33,10 @@ export default function RegionSelector() {
   const [showRegions, setShowRegions] = useState(false)
 
   return(
-    <div className="relative w-64 bg-white shadow-md text-dark-blue rounded-md dark:bg-dark-blue dark:text-white">
+    <div className="relative w-[70%] bg-white shadow-md text-dark-blue rounded-md dark:bg-dark-blue dark:text-white">
       <button
         onClick={() => setShowRegions(prev => !prev)}
-        className="flex items-center w-full h-[3rem] px-4 rounded-md text-left capitalize leading-[3rem]">
+        className="flex items-center w-full h-[3.5rem] px-4 rounded-md text-left capitalize leading-[3.5rem]">
         <span className="block flex-1 leading-none">
           {params.region ? params.region : 'filter by region'}
         </span>
