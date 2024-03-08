@@ -7,6 +7,9 @@ export default {
   darkMode: "class",
   theme: {
     extend: {
+      fontFamily: {
+        nunito: '"Nunito Sans", sans-serif'
+      },
       maxWidth: {
         desktop: "2000px"
       },
