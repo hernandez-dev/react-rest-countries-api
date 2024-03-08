@@ -33,7 +33,7 @@ export default function RegionSelector() {
   const [showRegions, setShowRegions] = useState(false)
 
   return(
-    <div className="relative w-64 bg-white shadow-md text-dark-blue rounded-md">
+    <div className="relative w-64 bg-white shadow-md text-dark-blue rounded-md dark:bg-dark-blue dark:text-white">
       <button
         onClick={() => setShowRegions(prev => !prev)}
         className="flex items-center w-full px-4 rounded-md text-left capitalize leading-[3rem]">
@@ -45,7 +45,7 @@ export default function RegionSelector() {
         </i>
       </button>
       {showRegions ? (
-        <div className="absolute left-0 top-full translate-y-2 z-10 w-full px-4 bg-white rounded-md">
+        <div className="absolute left-0 top-full translate-y-2 z-10 w-full px-4 bg-white rounded-md shadow-md dark:bg-dark-blue">
           {regions.map(region => {
             return(
               <NavLink
