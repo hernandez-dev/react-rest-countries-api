@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom"
 // routes
 import Root from "./routes/root.jsx"
 import Countries, { loader as countriesLoader } from "./routes/countries/index.jsx"
+import CountriesByRegion, { loader as countriesByRegionLoader } from "./routes/countries-by-region.jsx"
 import CountryDetails, { loader as countryLoader } from "./routes/country-details.jsx"
 
 const router = createBrowserRouter([
@@ -17,8 +18,8 @@ const router = createBrowserRouter([
       },
       {
         path: "region/:region",
-        loader: countriesLoader,
-        element: <Countries />
+        loader: countriesByRegionLoader,
+        element: <CountriesByRegion />
       },
       {
         path: ":country/details",
