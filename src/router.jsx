@@ -2,7 +2,7 @@ import { createBrowserRouter } from "react-router-dom"
 
 // routes
 import Root from "./routes/root.jsx"
-import Countries, { loader as countriesLoader } from "./routes/countries/index.jsx"
+import Countries, { loader as countriesLoader } from "./routes/countries/Countries.jsx"
 import CountriesByRegion, { loader as countriesByRegionLoader } from "./routes/countries-by-region.jsx"
 import CountryDetails, { loader as countryLoader } from "./routes/country-details.jsx"
 
