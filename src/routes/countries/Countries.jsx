@@ -9,14 +9,7 @@ import { fetchRequest } from "../../api.js"
 // loader
 export async function loader({ request, params }) {
   try {
-    let response = []
-    const url = new URL(request.url)
-    const q = url.searchParams.get("q")
-    if (q) {
-      response = await fetchRequest(`/name/${q}`)
-    } else {
-      response = await fetchRequest(params.region ? `/region/${params.region}` : '/all')
-    }
+    const response = await fetchRequest('/all')
     return response
   } catch (e) {
     console.log(e)
