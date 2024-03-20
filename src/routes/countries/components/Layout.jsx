@@ -21,7 +21,7 @@ export default function Layout({ title, countries }) {
         </header>
         {Boolean(countries) ? (
           <div className={`grid gap-5 ${navigation.state === "loading" ? 'opacity-50' : ''} transition duration-300 tablet:grid-cols-2 countries-desktop:grid-cols-3 countries-xl:grid-cols-4`}>
-            {countries.map(country => <CountryCard key={country.name.common} country={country} />).slice(0, 50)}
+            {countries.map(country => <CountryCard key={country.name.common} country={country} />)}
           </div>
         ) : (
           <h2 className="text-lg text-center text-dark-blue dark:text-white">
