@@ -7,9 +7,9 @@ import Layout from "./components/Layout.jsx"
 import { fetchRequest } from "../../api.js"
 
 // loader
-export async function loader({ request, params }) {
+export async function loader({ params }) {
   try {
-    const response = await fetchRequest(`/name/${q}`)
+    const response = await fetchRequest(`/name/${params.name}`)
     return response
   } catch (e) {
     console.log(e)
