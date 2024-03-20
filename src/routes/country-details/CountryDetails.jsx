@@ -38,6 +38,16 @@ export default function CountryDetails() {
   // navigate
   const navigate = useNavigate()
 
+  // handleNativeName
+  function handleNativeName(country) {
+    const elements = Object.values(country.name.nativeName)
+    if (elements.length) {
+      return elements[0].official
+    } else {
+      return "-"
+    }
+  }
+
   if (!country) return ""
 
   return(
@@ -61,7 +71,7 @@ export default function CountryDetails() {
             </h2>
             <div className="grid space-y-10 min-[1400px]:grid-cols-2">
               <div className="space-y-4">
-                <DetailsRow label="native name" value="" />
+                <DetailsRow label="native name" value={handleNativeName(country)} />
                 <DetailsRow label="population" value={country.population} />
                 <DetailsRow label="region" value={country.region} />
                 <DetailsRow label="sub region" value={country.subregion} />
