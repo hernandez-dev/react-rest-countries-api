@@ -42,7 +42,7 @@ export default function CountryDetails() {
 
   return(
     <Page title={country.name.common + ' - details'}>
-      <div className={`p-5 max-w-2xl mx-auto ${navigation.state === "loading" ? 'opacity-10' : ''} transition duration-300 desktop:max-w-desktop desktop:px-0`}>
+      <div className={`p-5 pt-10 max-w-2xl mx-auto ${navigation.state === "loading" ? 'opacity-10' : ''} transition duration-300 min-[1400px]:max-w-full min-[1400px]:items-center min-[1500px]:max-w-[1500px] desktop:max-w-desktop desktop:px-0`}>
         <header>
           <button className="flex items-center h-10 px-8 bg-white shadow rounded-md text-dark-blue dark:bg-dark-blue dark:text-white" onClick={() => navigate("/")}>
             <span className="block mr-3 leading-none">
@@ -51,7 +51,7 @@ export default function CountryDetails() {
             Back
           </button>
         </header>
-        <section className="pt-10 space-y-10">
+        <section className="grid pt-10 space-y-10 min-[1400px]:grid-cols-2 min-[1400px]:gap-5 min-[1400px]:items-center min-[1400px]:space-y-0">
           <div className="h-[60vw] max-h-[500px] rounded-lg overflow-hidden">
             <img src={country.flags.png} className="block w-full h-full" alt={country.flags.alt} />
           </div>
@@ -59,7 +59,7 @@ export default function CountryDetails() {
             <h2 className="font-bold text-3xl capitalize leading-none">
               {country.name.common}
             </h2>
-            <div className="space-y-10 sm:grid sm:grid-cols-2 sm:space-y-0">
+            <div className="grid space-y-10 min-[1400px]:grid-cols-2">
               <div className="space-y-4">
                 <DetailsRow label="native name" value="" />
                 <DetailsRow label="population" value={country.population} />
