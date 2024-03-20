@@ -19,9 +19,15 @@ export default function Layout({ title, countries }) {
           <SearchBox />
           <RegionSelector />
         </header>
-        <div className={`grid gap-5 ${navigation.state === "loading" ? 'opacity-50' : ''} transition duration-300 tablet:grid-cols-2 countries-desktop:grid-cols-3 countries-xl:grid-cols-4`}>
-          {countries.map(country => <CountryCard key={country.name.common} country={country} />).slice(0, 50)}
-        </div>
+        {Boolean(countries) ? (
+          <div className={`grid gap-5 ${navigation.state === "loading" ? 'opacity-50' : ''} transition duration-300 tablet:grid-cols-2 countries-desktop:grid-cols-3 countries-xl:grid-cols-4`}>
+            {countries.map(country => <CountryCard key={country.name.common} country={country} />).slice(0, 50)}
+          </div>
+        ) : (
+          <h2 className="text-lg text-center text-dark-blue dark:text-white">
+            We couldn't find what you're looking for!
+          </h2>
+        )}
       </div>
     </Page>
   )
