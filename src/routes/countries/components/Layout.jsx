@@ -14,7 +14,7 @@ export default function Layout({ title, countries }) {
 
   return(
     <Page title={title} scroll={true}>
-      <div className="p-5 space-y-10 max-w-2xl mx-auto tablet:max-w-[1100px] countries-desktop:px-10 countries-desktop:max-w-full desktop:max-w-desktop desktop:px-0">
+      <div className="p-5 pt-10 space-y-10 max-w-2xl mx-auto tablet:max-w-[1100px] countries-desktop:px-10 countries-desktop:max-w-full desktop:max-w-desktop desktop:px-0">
         <header className="space-y-5 tablet:flex tablet:items-center tablet:justify-between tablet:space-y-0">
           <SearchBox />
           <RegionSelector />
