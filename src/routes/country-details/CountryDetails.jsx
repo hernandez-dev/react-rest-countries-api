@@ -42,7 +42,7 @@ export default function CountryDetails() {
   function handleNativeName(country) {
     const elements = Object.values(country.name.nativeName)
     if (elements.length) {
-      return elements[0].official
+      return elements[0].common
     } else {
       return "-"
     }
