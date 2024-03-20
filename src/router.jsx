@@ -5,7 +5,7 @@ import Root from "./routes/root.jsx"
 import Countries, { loader as countriesLoader } from "./routes/countries/Countries.jsx"
 import CountriesByRegion, { loader as countriesByRegionLoader } from "./routes/countries/CountriesByRegion.jsx"
 import SearchCountries, { loader as searchCountriesLoader } from "./routes/countries/SearchCountries.jsx"
-import CountryDetails, { loader as countryLoader } from "./routes/country-details.jsx"
+import CountryDetails, { loader as countryLoader } from "./routes/country-details/CountryDetails.jsx"
 
 const router = createBrowserRouter([
   {
